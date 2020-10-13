@@ -15,3 +15,6 @@ Open source minigames
 
 # Art
 Only use art that you make or that's from the public domain
+
+## Links to artwork used
+- Graduation: https://calisphere.org/item/6f4f67db-71b8-4a5e-ae1f-2dbb4e0237d7/
