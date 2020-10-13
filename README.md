@@ -1,6 +1,8 @@
 # openwares
 Open source minigames
 
+![Latest build gif](https://media4.giphy.com/media/dGf8bOHYR7f2W380uD/giphy.gif)
+
 # Vision
 - A collection of minigames that are fun to make and fun to play
 
