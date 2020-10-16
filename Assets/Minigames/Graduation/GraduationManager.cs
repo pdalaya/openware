@@ -26,21 +26,25 @@ namespace Graduation {
             WinText.SetActive(false);
             LoseImage.SetActive(false);
             LoseText.SetActive(false);
+
+            int num = Mathf.FloorToInt(1 + Random.Range(0f, 4.99999f));
+            print("Fly" + num);
+            DiplomaAnimator.SetTrigger("Fly" + num);
+            StartCoroutine("timeout");
+        }
+
+        IEnumerator timeout() {
+            yield return new WaitForSeconds(4f);
+
+            if (result == MinigameResult.Ongoing) {
+                handleLose();
+            }
         }
 
         void Update() {
             // Don't let the player do anything once they've lost
             if (result == MinigameResult.Loss) {
                 return;
-            }
-
-            // If the player does nothing they lose
-            if (lastDiplomaPos == Diploma.position && result == MinigameResult.Ongoing) {
-                diplomaNotMovingCount++;
-
-                if (diplomaNotMovingCount > 10) {
-                    handleLose();
-                }
             }
 
             // If the player taps space, they either catch the diploma and win or miss it and lose
@@ -70,7 +74,6 @@ namespace Graduation {
         void handleLose() {
             result = MinigameResult.Loss;
 
-            DiplomaAnimator.SetTrigger("Miss");
             LoseImage.SetActive(true);
             LoseText.SetActive(true);
 
