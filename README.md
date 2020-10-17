@@ -1,5 +1,6 @@
 # openware
-Wario Ware inspired open source minigames
+- Wario Ware inspired open source minigames
+- [Download on itch.io](https://aidanwaite.itch.io/openware)
 
 # Vision
 - A collection of minigames that are fun to make and fun to play
