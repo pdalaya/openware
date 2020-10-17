@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Fast or Slow You Decide/Fast or Slow You Decide.unity
     guid: a7f27766acd124a9297e496653452a83
+  - enabled: 1
+    path: Assets/Minigames/Fally Bird/Fally Bird.unity
+    guid: 287b4bd20ca9a4d9c91e5adad704563f
   m_configObjects: {}
