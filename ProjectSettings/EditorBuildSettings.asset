@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Fally Bird/Fally Bird.unity
     guid: 287b4bd20ca9a4d9c91e5adad704563f
+  - enabled: 1
+    path: Assets/Minigames/Awp/Awp.unity
+    guid: fef6447b5029b4d33ae9f8787a611870
   m_configObjects: {}
