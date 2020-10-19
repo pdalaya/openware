@@ -8,8 +8,8 @@ env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  build:
-    name: Build my project
+  build-mac:
+    name: Make Mac build
     runs-on: ubuntu-latest
     steps:
       # Checkout
@@ -29,10 +29,15 @@ jobs:
         uses: webbertakken/unity-builder@v0.10
         with:
           unityVersion: 2019.4.12f1
-          targetPlatform: StandaloneWindows64
-
+          targetPlatform: StandaloneOSX
+          
+      - name: Set permissions
+        run: |
+          chmod a+x build/StandaloneOSX.app/Contents/MacOS/*
+          chmod a+x build/StandaloneOSX.app
+          
       # Output
       - uses: actions/upload-artifact@v1
         with:
-          name: Build
+          name: openware-mac
           path: build
