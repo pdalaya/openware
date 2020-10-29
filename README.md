@@ -17,8 +17,11 @@
 8. Make a pull request with your new minigame
 
 # Art and sound assets
-Art and sound assets can only be used if we've got the appropriate license. For this reason, making original art is encouraged. If you source art or sound from somewhere please link it here after you check that the license permits its use. 
+Art and sound assets can only be used if we've got the appropriate license. For this reason, making original art is encouraged. If you source art or sound from somewhere please link it here after you check that the license permits its use. Note "original" here means it was created specifically for Openware and thus it uses Openware's license.
 
+- Awp
+    - Original art by Aidan Waite
+    - Gun audio from [BBC](http://bbcsfx.acropolis.org.uk/?q=sniper) with [Remarc license](https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf) which grants non-commercial use.
 - Graduation
     - Original art by Aidan Waite
 - Fast or Slow You Decide
