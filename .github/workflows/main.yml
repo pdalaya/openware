@@ -58,12 +58,7 @@ jobs:
         with:
           unityVersion: 2019.4.12f1
           targetPlatform: StandaloneOSX
-          
-      - name: Set permissions
-        run: |
-          chmod a+x build/StandaloneOSX.app/Contents/MacOS/*
-          chmod a+x build/StandaloneOSX.app
-          
+       
       # Output
       - uses: actions/upload-artifact@v1
         with:
