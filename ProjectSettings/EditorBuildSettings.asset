@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Awp/Awp.unity
     guid: fef6447b5029b4d33ae9f8787a611870
+  - enabled: 1
+    path: Assets/Minigames/Jump Rope/Jump Rope.unity
+    guid: 297c3e16dde1a4dc2a87ecab0bce4f69
   m_configObjects: {}

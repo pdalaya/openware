@@ -84,7 +84,6 @@ namespace Awp {
                 enemyObj.GetComponent<Animator>().SetTrigger("Die");
                 enemyObj.GetComponent<PolygonCollider2D>().enabled = false;
 
-                print("DidShootEnemy");
                 remainingEnemies -= 1;
 
                 if (remainingEnemies <= 0) {
