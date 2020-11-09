@@ -24,8 +24,10 @@ Art and sound assets can only be used if we've got the appropriate license. For 
     - Gun audio from [BBC](http://bbcsfx.acropolis.org.uk/?q=sniper) with [Remarc license](https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf) which grants non-commercial use.
 - Graduation
     - Original art by Aidan Waite
+- Fally Bird
+    - Original art by Aidan Waite
 - Fast or Slow You Decide
     - Original art by Aidan Waite
     - Original sound by Carlo Arcovio
-- Fally Bird
+- Jump Rope
     - Original art by Aidan Waite
