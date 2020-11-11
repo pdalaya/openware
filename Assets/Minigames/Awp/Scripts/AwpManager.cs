@@ -23,8 +23,9 @@ namespace Awp {
         AudioSource audioSource;
         float lastShotTimestamp = 0f;
         int remainingEnemies = 2;
-        bool didLose = false;
         int secondsRemaining = 10;
+
+        bool isComplete = false;
 
         void Awake() {
             audioSource = GetComponent<AudioSource>();
@@ -36,9 +37,13 @@ namespace Awp {
         }
 
         void countdown() {
+            if (isComplete) {
+                return;
+            }
+
             CountdownText.text = "" + secondsRemaining;
 
-            if (secondsRemaining <= 0 && !didLose) {
+            if (secondsRemaining <= 0) {
                 handleLose();
             } else {
                 secondsRemaining--;
@@ -56,7 +61,7 @@ namespace Awp {
         }
 
         void attemptToFire() {
-            if (didLose) { return; }
+            if (isComplete) { return; }
 
             // Gun is on cooldown
             if (lastShotTimestamp != 0 && ((Time.time - lastShotTimestamp) < 1.4f)) {
@@ -74,6 +79,7 @@ namespace Awp {
         }
 
         public void DidShootEnemy(GameObject enemyObj) {
+            if (isComplete) { return; }
             StartCoroutine(handleShootEnemy(enemyObj));
         }
 
@@ -103,9 +109,11 @@ namespace Awp {
         }
 
         void handleWin() {
-            if (didLose) {
+            if (isComplete) {
                 return;
             }
+
+            isComplete = true;
 
             InvokeRepeating("celebrationSound", 0.3f, 0.4f);
             WinUI.SetActive(true);
@@ -117,7 +125,12 @@ namespace Awp {
         }
 
         void handleLose() {
-            didLose = true;
+            if (isComplete) {
+                return;
+            }
+
+            isComplete = true;
+
             LoseUI.SetActive(true);
             StartCoroutine("returnToMenuAfterDelay");
         }

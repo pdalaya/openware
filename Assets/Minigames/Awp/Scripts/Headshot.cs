@@ -6,6 +6,7 @@ namespace Awp {
     public class Headshot : MonoBehaviour {
 
         public AudioClip BoomHeadshotClip;
+        public AwpManager AwpManager;
 
         AudioSource source;
 
@@ -15,7 +16,7 @@ namespace Awp {
 
         private void OnMouseDown() {
             source.PlayOneShot(BoomHeadshotClip);
+            AwpManager.DidShootEnemy(transform.parent.gameObject);
         }
-
     }
 }
