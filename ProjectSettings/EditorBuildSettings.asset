@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Keepie Uppie/Keepie Uppie.unity
     guid: 4c8c40179ccef4bbdb251b26a34a95ff
+  - enabled: 1
+    path: Assets/Minigames/Button Mash/Button Mash.unity
+    guid: a916ea4c29da14dc7a5270e1ee447c13
   m_configObjects: {}

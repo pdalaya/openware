@@ -26,7 +26,7 @@ namespace KeepieUppie {
             }
 
             if (secondsRemaining >= 8) {
-                Text.text = "Click the ball to keep it off the ground\n\nReady?";
+                Text.text = "Click the ball to keep it off the ground.\nReady?";
                 HelperPlatform.SetActive(true);
             } else if (secondsRemaining > 0) {
                 HelperPlatform.SetActive(false);

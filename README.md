@@ -22,6 +22,8 @@ Art and sound assets can only be used if we've got the appropriate license. For 
 - Awp
     - Original art by Aidan Waite
     - Original sound by Carlo Arcovio
+- Button Mash
+    - Original art by Aidan Waite
 - Graduation
     - Original art by Aidan Waite
 - Fally Bird
