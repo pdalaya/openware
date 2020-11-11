@@ -1133,6 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846a10293a49849bf9471268fdcf0837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Roof: {fileID: 859542564}
   JumpRope: {fileID: 205782659}
   Player: {fileID: 1547210799}
   Gravity: {x: 0, y: -30, z: 0}
@@ -1149,7 +1150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745053853
 GameObject:
@@ -1202,7 +1203,7 @@ GameObject:
   - component: {fileID: 859542566}
   - component: {fileID: 859542565}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,7 +1281,7 @@ Transform:
   m_LocalScale: {x: 21.079723, y: 4.9662027, z: 21.079723}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &863605207
 GameObject:

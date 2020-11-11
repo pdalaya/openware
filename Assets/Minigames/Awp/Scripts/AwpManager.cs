@@ -7,9 +7,13 @@ using TMPro;
 namespace Awp {
     public class AwpManager : MonoBehaviour {
 
+        public AudioClip Brap;
+        public AudioClip Gunshot;
+        public AudioClip Death1;
+        public AudioClip Death2;
+
         public GameObject Crosshair;
         public Camera Cam;
-        public AudioClip Gunshot;
         public GameObject BulletHole;
         public TextMeshProUGUI CountdownText;
 
@@ -81,6 +85,12 @@ namespace Awp {
 
             // Prevent enemy from dying when they get clicked and the gun is on cooldown
             if (diff == 0f) {
+                if (remainingEnemies == 2) {
+                    audioSource.PlayOneShot(Death2);
+                } else if (remainingEnemies == 1) {
+                    audioSource.PlayOneShot(Death1);
+                }
+
                 enemyObj.GetComponent<Animator>().SetTrigger("Die");
                 enemyObj.GetComponent<PolygonCollider2D>().enabled = false;
 
@@ -93,8 +103,17 @@ namespace Awp {
         }
 
         void handleWin() {
+            if (didLose) {
+                return;
+            }
+
+            InvokeRepeating("celebrationSound", 0.3f, 0.4f);
             WinUI.SetActive(true);
             StartCoroutine("returnToMenuAfterDelay");
+        }
+
+        void celebrationSound() {
+            audioSource.PlayOneShot(Brap);
         }
 
         void handleLose() {
@@ -107,5 +126,6 @@ namespace Awp {
             yield return new WaitForSeconds(2f);
             SceneManager.LoadScene("MainMenu");
         }
+
     }
 }

@@ -11,6 +11,5 @@ namespace Awp {
             print("OnMouseDown");
             AwpManager.DidShootEnemy(gameObject);
         }
-
     }
 }

@@ -7,17 +7,26 @@ using UnityEngine.SceneManagement;
 namespace JumpRope {
     public class GameManager : MonoBehaviour {
 
+        public GameObject Roof;
         public GameObject JumpRope;
         public GameObject Player;
         public Vector3 Gravity;
         public TextMeshProUGUI Text;
 
+        Jump jump;
         bool isCompleted = false;
         int secondsRemaining = 8;
 
         private void Awake() {
             Physics.gravity = Gravity;
             StartCoroutine("StartGameFlow");
+            jump = Player.GetComponent<Jump>();
+        }
+
+        private void Update() {
+            if (isCompleted) {
+                jump.DoJump();
+            }
         }
 
         public void HandleLose() {
@@ -25,6 +34,7 @@ namespace JumpRope {
                 return;
             }
 
+            Roof.SetActive(false);
             isCompleted = true;
 
             var rb = Player.GetComponent<Rigidbody>();
@@ -36,6 +46,11 @@ namespace JumpRope {
         }
 
         public void HandleWin() {
+            if (isCompleted) {
+                return;
+            }
+
+            Roof.SetActive(false);
             isCompleted = true;
 
             Text.text = "You win!";

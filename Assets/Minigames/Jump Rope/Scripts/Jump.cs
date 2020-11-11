@@ -36,8 +36,12 @@ namespace JumpRope {
                     holdMultiplier = 1.25f;
                 }
 
-                rb.AddForce(Vector3.up * JumpStrength * holdMultiplier, ForceMode.VelocityChange);
+                DoJump(holdMultiplier);
             }
+        }
+
+        public void DoJump(float multiplier = 1f) {
+            rb.AddForce(Vector3.up * JumpStrength * multiplier, ForceMode.VelocityChange);
         }
     }
 }

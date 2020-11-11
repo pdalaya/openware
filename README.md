@@ -21,7 +21,7 @@ Art and sound assets can only be used if we've got the appropriate license. For 
 
 - Awp
     - Original art by Aidan Waite
-    - Gun audio from [BBC](http://bbcsfx.acropolis.org.uk/?q=sniper) with [Remarc license](https://github.com/bbcarchdev/Remarc/blob/master/doc/2016.09.27_RemArc_Content%20licence_Terms%20of%20Use_final.pdf) which grants non-commercial use.
+    - Original sound by Carlo Arcovio
 - Graduation
     - Original art by Aidan Waite
 - Fally Bird
@@ -30,4 +30,6 @@ Art and sound assets can only be used if we've got the appropriate license. For 
     - Original art by Aidan Waite
     - Original sound by Carlo Arcovio
 - Jump Rope
+    - Original art by Aidan Waite
+- Relax
     - Original art by Aidan Waite
