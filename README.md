@@ -31,5 +31,7 @@ Art and sound assets can only be used if we've got the appropriate license. For 
     - Original sound by Carlo Arcovio
 - Jump Rope
     - Original art by Aidan Waite
+- Keepie Uppie
+    - Original art by Aidan Waite 
 - Relax
     - Original art by Aidan Waite

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Relax/Relax.unity
     guid: d3ef1c99722264c5b86c6a86050abb5e
+  - enabled: 1
+    path: Assets/Minigames/Keepie Uppie/Keepie Uppie.unity
+    guid: 4c8c40179ccef4bbdb251b26a34a95ff
   m_configObjects: {}
