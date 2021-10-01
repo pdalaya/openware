@@ -1,0 +1,1 @@
+Open the Menu/MainMenu scene and click play
