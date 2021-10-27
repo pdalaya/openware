@@ -155,6 +155,10 @@ namespace SuperManager
             ContinueHighScoreGame();
         }
 
+        void DidCompleteSpecificMinigame() {
+            StartCoroutine("ShowAndSetupSpecificMiniGameMenu");
+        }
+
         void UpdateLifeIcons() {
             GameObject left = GameObject.Find("Life icon left");
             GameObject right = GameObject.Find("Life icon right");
@@ -193,18 +197,39 @@ namespace SuperManager
         }
 
         void DidTapMainMenuPlaySpecificMinigames() {
-
+            print("DidTapMainMenuPlaySpecificMinigames");
+            StartCoroutine("ShowAndSetupSpecificMiniGameMenu");
         }
 
-        IEnumerator ShowAndSetupGameMenu() {
+        void BackToMainMenu() {
+            StartCoroutine("ShowAndSetupMainMenu");
+            SceneManager.UnloadSceneAsync("Minigame Menu");
+        }
+
+        IEnumerator ShowAndSetupSpecificMiniGameMenu() {
+            currentScreen = Screen.PracticeMenu;
+
             // Load menu then wait a frame so it's completed
             SceneManager.LoadScene("Minigame Menu", LoadSceneMode.Additive);
 
             GameObject alphabetize = null;
+
             while (alphabetize == null) {
                 yield return new WaitForEndOfFrame();
                 alphabetize = GameObject.Find("Alphabetize");
             }
+            
+            // Unload any scene that's not SuperManager or Minigame Menu
+            for (int x = 0; x < SceneManager.sceneCount; x++) {
+                Scene scene = SceneManager.GetSceneAt(x);
+                if (scene.name != "SuperManager" && scene.name != "Minigame Menu") {
+                    SceneManager.UnloadSceneAsync(scene.name);
+                }
+            }
+
+            yield return new WaitForEndOfFrame();
+
+            GameObject.Find("Back button").GetComponent<Button>().onClick.AddListener(BackToMainMenu);
 
             // Setup menu button actions
             alphabetize.GetComponent<Button>().onClick.AddListener(DidTapAlphabetizeGame);
@@ -219,65 +244,73 @@ namespace SuperManager
             GameObject.Find("Relax").GetComponent<Button>().onClick.AddListener(DidTapRelaxGame);
         }       
 
-        // Game menu callbacks
+        // Specific minigame menu callbacks
         void DidTapAlphabetizeGame()
         {
-            SceneManager.LoadScene("Alphabetize", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Alphabetize"));
         }
 
         void DidTapAwpGame()
         {
-            SceneManager.LoadScene("Awp", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Awp"));
         }
 
         void DidTapButtonMashGame()
         {
-            SceneManager.LoadScene("Button Mash", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Button Mash"));
         }
 
         void DidTapFallyBirdGame()
         {
-            SceneManager.LoadScene("Fally Bird", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Fally Bird"));
         }
 
         void DidTapFastOrSlowYouDecideGame()
         {
-            SceneManager.LoadScene("Fast or Slow You Decide", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Fast or Slow You Decide"));
         }
 
         void DidTapFieldGoalGame()
         {
-            SceneManager.LoadScene("Field Goal", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Field Goal"));
         }
 
         void DidTapGraduationGame()
         {
-            SceneManager.LoadScene("Graduation", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Graduation"));
         }
 
         void DidTapJumpRopeGame()
         {
-            SceneManager.LoadScene("Jump Rope", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Jump Rope"));
         }
 
         void DidTapKeepieUppieGame()
         {
-            SceneManager.LoadScene("Keepie Uppie", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Keepie Uppie"));
         }
 
         void DidTapRelaxGame()
         {
-            SceneManager.LoadScene("Relax", LoadSceneMode.Additive);
-            SceneManager.UnloadSceneAsync("MainMenu");
+            StartCoroutine(ShowAndSetupSpecificMinigame("Relax"));
+        }
+
+        IEnumerator ShowAndSetupSpecificMinigame(string sceneName) {
+            currentMinigame = sceneName;
+            currentScreen = Screen.PracticeMinigame;
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
+
+            GameObject completionHandler = null;
+
+            while (completionHandler == null) {
+                yield return new WaitForEndOfFrame();
+                completionHandler = GameObject.Find("Minigame Completion Handler");
+            }
+
+            SceneManager.UnloadSceneAsync("Minigame Menu");
+
+            completionHandler.GetComponent<MinigameCompletionHandler>().WinCallback = DidCompleteSpecificMinigame;
+            completionHandler.GetComponent<MinigameCompletionHandler>().LoseCallback = DidCompleteSpecificMinigame;
         }
 
         void PopulateMinigameSceneNames() {
