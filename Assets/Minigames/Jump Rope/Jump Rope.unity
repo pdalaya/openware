@@ -1133,6 +1133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846a10293a49849bf9471268fdcf0837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinigameCompletionHandler: {fileID: 1342725325}
   Roof: {fileID: 859542564}
   JumpRope: {fileID: 205782659}
   Player: {fileID: 1547210799}
@@ -1950,6 +1951,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2d4c9f4fde446ff9ad860c919e1108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1342725324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342725326}
+  - component: {fileID: 1342725325}
+  m_Layer: 0
+  m_Name: Minigame Completion Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1342725325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342725324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7368a8345b104386d83c6d635b323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1342725326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342725324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 371.8162, y: 468.45334, z: -128.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435571231
 GameObject:
   m_ObjectHideFlags: 0

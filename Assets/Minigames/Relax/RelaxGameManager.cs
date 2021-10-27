@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 namespace Relax {
     public class RelaxGameManager : MonoBehaviour {
 
+        public MinigameCompletionHandler MinigameCompletionHandler;
         public Transform ExplosionCenter;
         public TextMeshProUGUI FeedbackText;
         public TextMeshProUGUI CountdownText;
@@ -55,8 +56,12 @@ namespace Relax {
 
             isComplete = true;
             FeedbackText.text = "You Win!";
+            StartCoroutine("winCallback");
+        }
 
-            StartCoroutine("returnToMenuAfterDelay");
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
 
         public void Lose() {
@@ -76,12 +81,12 @@ namespace Relax {
                 bodyPart.AddTorque(Random.Range(50f, 300f));
             }
 
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("loseCallback");
         }
 
-        IEnumerator returnToMenuAfterDelay() {
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene("MainMenu");
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
     }
 }

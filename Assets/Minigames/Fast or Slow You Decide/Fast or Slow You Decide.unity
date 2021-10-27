@@ -492,6 +492,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250723387}
   m_CullTransparentMesh: 0
+--- !u!1 &288151558
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 288151560}
+  - component: {fileID: 288151559}
+  m_Layer: 0
+  m_Name: Minigame Completion Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &288151559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288151558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb7368a8345b104386d83c6d635b323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &288151560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288151558}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 371.8162, y: 468.45334, z: -128.125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &294812219
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,6 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97bb192e7971e4c2a897b058e362fcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MinigameCompletionHandler: {fileID: 288151559}
   ResultText: {fileID: 2070110395}
   ClockText: {fileID: 628909083}
   TenSeconds: {fileID: 8300000, guid: 3661d7b0ee172478bbdf4b13e84fb675, type: 3}

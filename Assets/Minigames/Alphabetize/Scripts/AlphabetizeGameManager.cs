@@ -15,6 +15,7 @@ namespace Alphabetize {
         public Color CorrectTextColor;
         public Color RegularTextColor;
         public int NumberOfWords = 3;
+        public MinigameCompletionHandler MinigameCompletionHandler;
 
         List<string> wordList = new List<string>();
         List<string> spawnedWords = new List<string>();
@@ -98,8 +99,14 @@ namespace Alphabetize {
             }
 
             isComplete = true;
-            FeedbackText.text = "You win!";
-            StartCoroutine("returnToMenuAfterDelay");
+            FeedbackText.text = "You lose";
+            MinigameCompletionHandler.LoseCallback.Invoke();
+            StartCoroutine("loseCallback");
+        }
+
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
 
         void handleWin() {
@@ -109,12 +116,12 @@ namespace Alphabetize {
 
             isComplete = true;
             FeedbackText.text = "You win!";
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("winCallback");
         }
 
-        IEnumerator returnToMenuAfterDelay() {
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene("MainMenu");
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
 
         void populateWordList() {

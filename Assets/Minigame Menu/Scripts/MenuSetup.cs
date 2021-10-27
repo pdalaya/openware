@@ -18,8 +18,8 @@ namespace Menu {
                 newOval.GetComponent<Image>().sprite = Ovals[ind];
                 newOval.transform.SetParent(Canvas.transform);
                 newOval.transform.SetSiblingIndex(1);
+                newOval.name = "Background Oval";
             }
-
         }
 
         void restoreDefaults() {

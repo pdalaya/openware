@@ -11,6 +11,7 @@ namespace KeepieUppie {
         public GameObject SoccerBall;
         public Vector3 Gravity;
         public TextMeshProUGUI Text;
+        public MinigameCompletionHandler MinigameCompletionHandler;
 
         int secondsRemaining = 10;
         bool isComplete = false;
@@ -34,10 +35,20 @@ namespace KeepieUppie {
             } else if (secondsRemaining <= 0) {
                 Text.text = "You Win!";
                 isComplete = true;
-                StartCoroutine("returnToMenuAfterDelay");
+                StartCoroutine("winCallback");
             }
 
             secondsRemaining--;
+        }
+
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
+        }
+
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
 
         public void DidClickOnSoccerBall() {
@@ -53,12 +64,7 @@ namespace KeepieUppie {
 
             isComplete = true;
             Text.text = "You Lose!";
-            StartCoroutine("returnToMenuAfterDelay");
-        }
-
-        IEnumerator returnToMenuAfterDelay() {
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene("MainMenu");
+            StartCoroutine("loseCallback");
         }
     }
 }

@@ -9,6 +9,7 @@ namespace ButtonMash {
 
         public TextMeshProUGUI Text;
         public GameObject BarMask;
+        public MinigameCompletionHandler MinigameCompletionHandler;
 
         bool isComplete = false;
 
@@ -35,9 +36,14 @@ namespace ButtonMash {
 
             if (secondsRemaining <= 0) {
                 isComplete = true;
-                Text.text = "You lose!";
-                StartCoroutine("returnToMenuAfterDelay");
+                Text.text = "You lose";
+                StartCoroutine("loseCallback");
             }
+        }
+
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
 
         public void DidTapButton() {
@@ -56,13 +62,13 @@ namespace ButtonMash {
             if (percent == 1) {
                 isComplete = true;
                 Text.text = "You win!";
-                StartCoroutine("returnToMenuAfterDelay");
+                StartCoroutine("winCallback");
             }
         }
 
-        IEnumerator returnToMenuAfterDelay() {
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene("MainMenu");
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
     }
 }

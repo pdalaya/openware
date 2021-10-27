@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 namespace JumpRope {
     public class GameManager : MonoBehaviour {
 
+        public MinigameCompletionHandler MinigameCompletionHandler;
         public GameObject Roof;
         public GameObject JumpRope;
         public GameObject Player;
@@ -42,7 +43,12 @@ namespace JumpRope {
             rb.AddExplosionForce(1000f, new Vector3(Random.Range(3f,20f), Random.Range(3f, 20f), Random.Range(3f, 20f)), 100f);
 
             Text.text = "You lose!";
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("loseCallback");
+        }
+
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
 
         public void HandleWin() {
@@ -54,7 +60,12 @@ namespace JumpRope {
             isCompleted = true;
 
             Text.text = "You win!";
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("winCallback");
+        }
+
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
 
         IEnumerator StartGameFlow() {

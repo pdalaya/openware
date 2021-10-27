@@ -7,7 +7,7 @@ namespace Alphabetize {
         AlphabetizeGameManager GameManager;
 
         private void Awake() {
-            GameManager = GameObject.Find("AlphabetizeGameManager").GetComponent<AlphabetizeGameManager>();
+            GameManager = GameObject.Find("Alphabetize Game Manager").GetComponent<AlphabetizeGameManager>();
         }
 
         public void DidTapButton() {

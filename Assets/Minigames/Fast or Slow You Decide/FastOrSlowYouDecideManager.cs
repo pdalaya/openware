@@ -8,6 +8,7 @@ using TMPro;
 namespace FastOrSlowYouDecide {
     public class FastOrSlowYouDecideManager : MonoBehaviour {
 
+        public MinigameCompletionHandler MinigameCompletionHandler;
         public TextMeshProUGUI ResultText;
         public TextMeshProUGUI ClockText;
 
@@ -132,10 +133,8 @@ namespace FastOrSlowYouDecide {
             isComplete = true;
             
             audioSource.PlayOneShot(LossClip);
-            print(currentSpeed);
-
-            yield return new WaitForSeconds(3.5f);
-            SceneManager.LoadScene("MainMenu");
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
 
         IEnumerator handleWin() {
@@ -143,8 +142,8 @@ namespace FastOrSlowYouDecide {
             
             audioSource.PlayOneShot(WinClip);
 
-            yield return new WaitForSeconds(3.5f);
-            SceneManager.LoadScene("MainMenu");
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
 
         public void GuessSlow() {

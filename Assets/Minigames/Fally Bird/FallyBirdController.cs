@@ -7,11 +7,11 @@ using TMPro;
 namespace FallyBird {
     public class FallyBirdController : MonoBehaviour {
 
-        // TODO: set the value that ends up working nicely as the initial value here
         public float JumpPower;
 
         public TextMeshProUGUI ResultText;
         public TextMeshProUGUI SecondsText;
+        public MinigameCompletionHandler MinigameCompletionHandler;
 
         bool isComplete = false;
 
@@ -75,7 +75,12 @@ namespace FallyBird {
             ResultText.text = "You Lose!";
 
             isComplete = true;
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("loseCallback");
+        }
+
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
 
         void handleWin() {
@@ -91,12 +96,12 @@ namespace FallyBird {
             ResultText.text = "You Win!";
 
             isComplete = true;
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("winCallback");
         }
 
-        IEnumerator returnToMenuAfterDelay() {
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene("MainMenu");
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
     }
 }

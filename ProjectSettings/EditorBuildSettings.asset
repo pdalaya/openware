@@ -6,30 +6,45 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Menu/MainMenu.unity
+    path: Assets/SuperManager.unity
+    guid: 0c830fb45da34cc4ab17cd1167b4bfa6
+  - enabled: 1
+    path: Assets/Main Menu/Main Menu.unity
+    guid: 4b09d575983baba45aeec333ea2cce09
+  - enabled: 1
+    path: Assets/Minigame Menu/Minigame Menu.unity
     guid: fc5d27ef69f1f4b2faed3f7e96f22628
   - enabled: 1
-    path: Assets/Minigames/Graduation/Graduation.unity
-    guid: 1797b4fcd15354ff7a84310212c04fc7
+    path: Assets/Score and lives/Score and lives.unity
+    guid: 9e07cf485589a8a49bac4f17d6271abe
   - enabled: 1
-    path: Assets/Minigames/Fast or Slow You Decide/Fast or Slow You Decide.unity
-    guid: a7f27766acd124a9297e496653452a83
-  - enabled: 1
-    path: Assets/Minigames/Fally Bird/Fally Bird.unity
-    guid: 287b4bd20ca9a4d9c91e5adad704563f
+    path: Assets/Minigames/Alphabetize/Alphabetize.unity
+    guid: 5b664c44070144c3aac590fe7b063af7
   - enabled: 1
     path: Assets/Minigames/Awp/Awp.unity
     guid: fef6447b5029b4d33ae9f8787a611870
   - enabled: 1
+    path: Assets/Minigames/Button Mash/Button Mash.unity
+    guid: a916ea4c29da14dc7a5270e1ee447c13
+  - enabled: 1
+    path: Assets/Minigames/Fally Bird/Fally Bird.unity
+    guid: 287b4bd20ca9a4d9c91e5adad704563f
+  - enabled: 1
+    path: Assets/Minigames/Fast or Slow You Decide/Fast or Slow You Decide.unity
+    guid: a7f27766acd124a9297e496653452a83
+  - enabled: 1
+    path: Assets/Minigames/Field Goal/Field Goal.unity
+    guid: 641f3847d468bfb44b93fb9788e3a9d5
+  - enabled: 1
+    path: Assets/Minigames/Graduation/Graduation.unity
+    guid: 1797b4fcd15354ff7a84310212c04fc7
+  - enabled: 1
     path: Assets/Minigames/Jump Rope/Jump Rope.unity
     guid: 297c3e16dde1a4dc2a87ecab0bce4f69
-  - enabled: 1
-    path: Assets/Minigames/Relax/Relax.unity
-    guid: d3ef1c99722264c5b86c6a86050abb5e
   - enabled: 1
     path: Assets/Minigames/Keepie Uppie/Keepie Uppie.unity
     guid: 4c8c40179ccef4bbdb251b26a34a95ff
   - enabled: 1
-    path: Assets/Minigames/Button Mash/Button Mash.unity
-    guid: a916ea4c29da14dc7a5270e1ee447c13
+    path: Assets/Minigames/Relax/Relax.unity
+    guid: d3ef1c99722264c5b86c6a86050abb5e
   m_configObjects: {}

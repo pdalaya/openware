@@ -20,6 +20,8 @@ namespace Awp {
         public GameObject WinUI;
         public GameObject LoseUI;
 
+        public MinigameCompletionHandler MinigameCompletionHandler;
+
         AudioSource audioSource;
         float lastShotTimestamp = 0f;
         int remainingEnemies = 2;
@@ -116,8 +118,12 @@ namespace Awp {
             isComplete = true;
 
             InvokeRepeating("celebrationSound", 0.3f, 0.4f);
-            WinUI.SetActive(true);
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("winCallback");
+        }
+
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
 
         void celebrationSound() {
@@ -130,9 +136,12 @@ namespace Awp {
             }
 
             isComplete = true;
+            StartCoroutine("loseCallback");
+        }
 
-            LoseUI.SetActive(true);
-            StartCoroutine("returnToMenuAfterDelay");
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
 
         IEnumerator returnToMenuAfterDelay() {

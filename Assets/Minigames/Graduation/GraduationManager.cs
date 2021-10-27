@@ -15,6 +15,7 @@ namespace Graduation {
 
         public GameObject LoseImage;
         public GameObject LoseText;
+        public MinigameCompletionHandler MinigameCompletionHandler;
 
         MinigameResult result = MinigameResult.Ongoing;
 
@@ -67,8 +68,12 @@ namespace Graduation {
             DiplomaAnimator.SetTrigger("Catch");
             WinImage.SetActive(true);
             WinText.SetActive(true);
+            StartCoroutine("winCallback");
+        }
 
-            StartCoroutine("returnToMenuAfterDelay");
+        IEnumerator winCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.WinCallback.Invoke();
         }
 
         void handleLose() {
@@ -76,14 +81,12 @@ namespace Graduation {
 
             LoseImage.SetActive(true);
             LoseText.SetActive(true);
-
-            StartCoroutine("returnToMenuAfterDelay");
+            StartCoroutine("loseCallback");
         }
 
-        IEnumerator returnToMenuAfterDelay() {
-            yield return new WaitForSeconds(2f);
-            SceneManager.LoadScene("MainMenu");
+        IEnumerator loseCallback() {
+            yield return new WaitForSeconds(2);
+            MinigameCompletionHandler.LoseCallback.Invoke();
         }
-
     }
 }
