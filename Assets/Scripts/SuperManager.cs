@@ -12,7 +12,8 @@ namespace SuperManager
         int lives;
         int score;
 
-        enum Screen {
+        enum Screen
+        {
             MainMenu, HighScoreScoreScreen, HighScoreMinigame, PracticeMenu, PracticeMinigame
         }
 
@@ -27,7 +28,8 @@ namespace SuperManager
             StartCoroutine("ShowAndSetupMainMenu");
         }
 
-        IEnumerator ShowAndSetupMainMenu() {
+        IEnumerator ShowAndSetupMainMenu()
+        {
             print("ShowAndSetupMainMenu");
             currentScreen = Screen.MainMenu;
             SceneManager.LoadScene("Main Menu", LoadSceneMode.Additive);
@@ -36,7 +38,8 @@ namespace SuperManager
             GameObject playSpecific = null;
             GameObject highScoreText = null;
 
-            while (play == null || playSpecific == null) {
+            while (play == null || playSpecific == null)
+            {
                 yield return new WaitForEndOfFrame();
                 play = GameObject.Find("Play");
                 playSpecific = GameObject.Find("Play specific minigames");
@@ -48,11 +51,13 @@ namespace SuperManager
             highScoreText.GetComponent<TextMeshProUGUI>().text = "High score: " + PlayerPrefs.GetInt("HighScore", 0);
         }
 
-        void DidTapMainMenuPlay() {
+        void DidTapMainMenuPlay()
+        {
             StartCoroutine("StartNewHighScoreGame");
         }
 
-        IEnumerator StartNewHighScoreGame() {
+        IEnumerator StartNewHighScoreGame()
+        {
             currentScreen = Screen.HighScoreScoreScreen;
 
             unplayedMinigameSceneNames = minigameSceneNames;
@@ -63,7 +68,8 @@ namespace SuperManager
 
             GameObject scoreText = null;
 
-            while (scoreText == null) {
+            while (scoreText == null)
+            {
                 yield return new WaitForEndOfFrame();
                 scoreText = GameObject.Find("Score text");
             }
@@ -77,21 +83,27 @@ namespace SuperManager
             ContinueHighScoreGame();
         }
 
-        void ContinueHighScoreGame() {
-            switch (currentScreen) {
+        void ContinueHighScoreGame()
+        {
+            switch (currentScreen)
+            {
                 case Screen.HighScoreScoreScreen:
                     // If we're dead or out of mini games to play
-                    if (lives <= 0 || unplayedMinigameSceneNames.Count == 0) {
+                    if (lives <= 0 || unplayedMinigameSceneNames.Count == 0)
+                    {
                         // Update high score if higher
                         int currentHighScore = PlayerPrefs.GetInt("HighScore", 0);
-                        if (score > currentHighScore) {
+                        if (score > currentHighScore)
+                        {
                             PlayerPrefs.SetInt("HighScore", score);
                         }
 
                         // Back to main menu
                         StartCoroutine("ShowAndSetupMainMenu");
                         SceneManager.UnloadSceneAsync("Score and lives");
-                    } else {
+                    }
+                    else
+                    {
                         // Choose a random minigame to play next
                         int ind = Random.Range(0, unplayedMinigameSceneNames.Count - 1);
                         currentMinigame = unplayedMinigameSceneNames[ind];
@@ -108,13 +120,15 @@ namespace SuperManager
             }
         }
 
-        IEnumerator ShowAndSetupHighScoreMinigame(string sceneName) {
+        IEnumerator ShowAndSetupHighScoreMinigame(string sceneName)
+        {
             currentScreen = Screen.HighScoreMinigame;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
 
             GameObject completionHandler = null;
 
-            while (completionHandler == null) {
+            while (completionHandler == null)
+            {
                 yield return new WaitForEndOfFrame();
                 completionHandler = GameObject.Find("Minigame Completion Handler");
             }
@@ -123,13 +137,15 @@ namespace SuperManager
             completionHandler.GetComponent<MinigameCompletionHandler>().LoseCallback = DidLoseMinigame;
         }
 
-        IEnumerator HighScoreFromGameToScoreScreen() {
+        IEnumerator HighScoreFromGameToScoreScreen()
+        {
             currentScreen = Screen.HighScoreScoreScreen;
             SceneManager.LoadScene("Score and lives", LoadSceneMode.Additive);
 
             GameObject scoreText = null;
 
-            while (scoreText == null) {
+            while (scoreText == null)
+            {
                 yield return new WaitForEndOfFrame();
                 scoreText = GameObject.Find("Score text");
             }
@@ -143,40 +159,48 @@ namespace SuperManager
             ContinueHighScoreGame();
         }
 
-        void DidWinMinigame() {
+        void DidWinMinigame()
+        {
             print("DidWinMinigame");
             score += 1;
             ContinueHighScoreGame();
         }
 
-        void DidLoseMinigame() {
+        void DidLoseMinigame()
+        {
             print("DidLoseMinigame");
             lives -= 1;
             ContinueHighScoreGame();
         }
 
-        void DidCompleteSpecificMinigame() {
+        void DidCompleteSpecificMinigame()
+        {
             StartCoroutine("ShowAndSetupSpecificMiniGameMenu");
         }
 
-        void UpdateLifeIcons() {
+        void UpdateLifeIcons()
+        {
             GameObject left = GameObject.Find("Life icon left");
             GameObject right = GameObject.Find("Life icon right");
             GameObject center = GameObject.Find("Life icon center");
             GameObject gameOver = GameObject.Find("Game over text");
             GameObject livesTitle = GameObject.Find("Lives title text");
 
-            if (lives <= 0) {
+            if (lives <= 0)
+            {
                 gameOver.SetActive(true);
                 livesTitle.SetActive(false);
                 left.SetActive(false);
                 center.SetActive(false);
                 right.SetActive(false);
-            } else {
+            }
+            else
+            {
                 gameOver.SetActive(false);
                 livesTitle.SetActive(true);
 
-                switch (lives) {
+                switch (lives)
+                {
                     case 1:
                         left.SetActive(false);
                         center.SetActive(true);
@@ -196,17 +220,20 @@ namespace SuperManager
             }
         }
 
-        void DidTapMainMenuPlaySpecificMinigames() {
+        void DidTapMainMenuPlaySpecificMinigames()
+        {
             print("DidTapMainMenuPlaySpecificMinigames");
             StartCoroutine("ShowAndSetupSpecificMiniGameMenu");
         }
 
-        void BackToMainMenu() {
+        void BackToMainMenu()
+        {
             StartCoroutine("ShowAndSetupMainMenu");
             SceneManager.UnloadSceneAsync("Minigame Menu");
         }
 
-        IEnumerator ShowAndSetupSpecificMiniGameMenu() {
+        IEnumerator ShowAndSetupSpecificMiniGameMenu()
+        {
             currentScreen = Screen.PracticeMenu;
 
             // Load menu then wait a frame so it's completed
@@ -214,15 +241,18 @@ namespace SuperManager
 
             GameObject alphabetize = null;
 
-            while (alphabetize == null) {
+            while (alphabetize == null)
+            {
                 yield return new WaitForEndOfFrame();
                 alphabetize = GameObject.Find("Alphabetize");
             }
-            
+
             // Unload any scene that's not SuperManager or Minigame Menu
-            for (int x = 0; x < SceneManager.sceneCount; x++) {
+            for (int x = 0; x < SceneManager.sceneCount; x++)
+            {
                 Scene scene = SceneManager.GetSceneAt(x);
-                if (scene.name != "SuperManager" && scene.name != "Minigame Menu") {
+                if (scene.name != "SuperManager" && scene.name != "Minigame Menu")
+                {
                     SceneManager.UnloadSceneAsync(scene.name);
                 }
             }
@@ -232,9 +262,11 @@ namespace SuperManager
             GameObject.Find("Back button").GetComponent<Button>().onClick.AddListener(BackToMainMenu);
 
             // Setup menu button actions
+            GameObject.Find("Alphabet").GetComponent<Button>().onClick.AddListener(DidTapAlphabetGame);
             alphabetize.GetComponent<Button>().onClick.AddListener(DidTapAlphabetizeGame);
             GameObject.Find("Awp").GetComponent<Button>().onClick.AddListener(DidTapAwpGame);
             GameObject.Find("Button Mash").GetComponent<Button>().onClick.AddListener(DidTapButtonMashGame);
+            GameObject.Find("Capsta").GetComponent<Button>().onClick.AddListener(DidTapCapstaGame);
             GameObject.Find("Fally Bird").GetComponent<Button>().onClick.AddListener(DidTapFallyBirdGame);
             GameObject.Find("Fast or Slow You Decide").GetComponent<Button>().onClick.AddListener(DidTapFastOrSlowYouDecideGame);
             GameObject.Find("Field Goal").GetComponent<Button>().onClick.AddListener(DidTapFieldGoalGame);
@@ -242,9 +274,14 @@ namespace SuperManager
             GameObject.Find("Jump Rope").GetComponent<Button>().onClick.AddListener(DidTapJumpRopeGame);
             GameObject.Find("Keepie Uppie").GetComponent<Button>().onClick.AddListener(DidTapKeepieUppieGame);
             GameObject.Find("Relax").GetComponent<Button>().onClick.AddListener(DidTapRelaxGame);
-        }       
+        }
 
         // Specific minigame menu callbacks
+        void DidTapAlphabetGame()
+        {
+            StartCoroutine(ShowAndSetupSpecificMinigame("Alphabet"));
+        }
+
         void DidTapAlphabetizeGame()
         {
             StartCoroutine(ShowAndSetupSpecificMinigame("Alphabetize"));
@@ -258,6 +295,10 @@ namespace SuperManager
         void DidTapButtonMashGame()
         {
             StartCoroutine(ShowAndSetupSpecificMinigame("Button Mash"));
+        }
+
+        void DidTapCapstaGame() {
+            StartCoroutine(ShowAndSetupSpecificMinigame("Capsta"));
         }
 
         void DidTapFallyBirdGame()
@@ -295,14 +336,16 @@ namespace SuperManager
             StartCoroutine(ShowAndSetupSpecificMinigame("Relax"));
         }
 
-        IEnumerator ShowAndSetupSpecificMinigame(string sceneName) {
+        IEnumerator ShowAndSetupSpecificMinigame(string sceneName)
+        {
             currentMinigame = sceneName;
             currentScreen = Screen.PracticeMinigame;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
 
             GameObject completionHandler = null;
 
-            while (completionHandler == null) {
+            while (completionHandler == null)
+            {
                 yield return new WaitForEndOfFrame();
                 completionHandler = GameObject.Find("Minigame Completion Handler");
             }
@@ -313,9 +356,12 @@ namespace SuperManager
             completionHandler.GetComponent<MinigameCompletionHandler>().LoseCallback = DidCompleteSpecificMinigame;
         }
 
-        void PopulateMinigameSceneNames() {
+        void PopulateMinigameSceneNames()
+        {
+            minigameSceneNames.Add("Alphabet");
             minigameSceneNames.Add("Alphabetize");
             minigameSceneNames.Add("Button Mash");
+            minigameSceneNames.Add("Capsta");
             minigameSceneNames.Add("Fally Bird");
             minigameSceneNames.Add("Fast or Slow You Decide");
             minigameSceneNames.Add("Field Goal");
