@@ -276,6 +276,7 @@ namespace SuperManager
             GameObject.Find("Keepie Uppie").GetComponent<Button>().onClick.AddListener(DidTapKeepieUppieGame);
             GameObject.Find("Relax").GetComponent<Button>().onClick.AddListener(DidTapRelaxGame);
             GameObject.Find("Mouse Maze").GetComponent<Button>().onClick.AddListener(DidTapMouseMazeGame);
+            GameObject.Find("Bubble Pop").GetComponent<Button>().onClick.AddListener(DidTapBubblePopGame);
         }
 
         // Specific minigame menu callbacks        
@@ -342,6 +343,11 @@ namespace SuperManager
         {
             StartCoroutine(ShowAndSetupSpecificMinigame("Relax"));
         }
+        
+        void DidTapBubblePopGame()
+        {
+            StartCoroutine(ShowAndSetupSpecificMinigame("Bubble Pop"));
+        }
 
         IEnumerator ShowAndSetupSpecificMinigame(string sceneName)
         {
@@ -378,6 +384,7 @@ namespace SuperManager
             minigameSceneNames.Add("Keepie Uppie");
             minigameSceneNames.Add("Mouse Maze");
             minigameSceneNames.Add("Relax");
+            minigameSceneNames.Add("Bubble Pop");
         }
     }
 }
