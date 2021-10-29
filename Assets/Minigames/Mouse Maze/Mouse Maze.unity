@@ -255,6 +255,7 @@ MonoBehaviour:
   LoseText: {fileID: 1022291699}
   WinArea: {fileID: 382848185}
   CountdownText: {fileID: 2100753304}
+  Dead: {fileID: 21300000, guid: 7774b6aa791e6aa48aec3ec2c5553ec4, type: 3}
 --- !u!1 &382848185
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +480,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3c847139e71de734588de70ef58027d5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d9bbe331bf405a4e8d30450fc0f4bc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

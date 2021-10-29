@@ -24,7 +24,7 @@ namespace SuperManager
 
         void Start()
         {
-            PopulateMinigameSceneNames();
+            minigameSceneNames = Utilities.MinigameScenes();
             StartCoroutine("ShowAndSetupMainMenu");
         }
 
@@ -277,6 +277,7 @@ namespace SuperManager
             GameObject.Find("Relax").GetComponent<Button>().onClick.AddListener(DidTapRelaxGame);
             GameObject.Find("Mouse Maze").GetComponent<Button>().onClick.AddListener(DidTapMouseMazeGame);
             GameObject.Find("Bubble Pop").GetComponent<Button>().onClick.AddListener(DidTapBubblePopGame);
+            GameObject.Find("Split").GetComponent<Button>().onClick.AddListener(DidTapSplitGame);
         }
 
         // Specific minigame menu callbacks        
@@ -349,6 +350,10 @@ namespace SuperManager
             StartCoroutine(ShowAndSetupSpecificMinigame("Bubble Pop"));
         }
 
+        void DidTapSplitGame() {
+            StartCoroutine(ShowAndSetupSpecificMinigame("Split"));
+        }
+
         IEnumerator ShowAndSetupSpecificMinigame(string sceneName)
         {
             currentMinigame = sceneName;
@@ -367,24 +372,6 @@ namespace SuperManager
 
             completionHandler.WinCallback = DidCompleteSpecificMinigame;
             completionHandler.LoseCallback = DidCompleteSpecificMinigame;
-        }
-
-        void PopulateMinigameSceneNames()
-        {
-            // Add new minigame here
-            minigameSceneNames.Add("Alphabet");
-            minigameSceneNames.Add("Alphabetize");
-            minigameSceneNames.Add("Button Mash");
-            minigameSceneNames.Add("Capsta");
-            minigameSceneNames.Add("Fally Bird");
-            minigameSceneNames.Add("Fast or Slow You Decide");
-            minigameSceneNames.Add("Field Goal");
-            minigameSceneNames.Add("Graduation");
-            minigameSceneNames.Add("Jump Rope");
-            minigameSceneNames.Add("Keepie Uppie");
-            minigameSceneNames.Add("Mouse Maze");
-            minigameSceneNames.Add("Relax");
-            minigameSceneNames.Add("Bubble Pop");
         }
     }
 }

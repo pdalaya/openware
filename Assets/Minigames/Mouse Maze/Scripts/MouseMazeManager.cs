@@ -28,6 +28,7 @@ namespace MouseMaze {
         public GameObject LoseText;
         public GameObject WinArea;
         public TextMeshProUGUI CountdownText;
+        public Sprite Dead;
 
         bool didStart = false;
         bool gameOver = false;
@@ -122,20 +123,19 @@ namespace MouseMaze {
         IEnumerator Win() {
             WinText.SetActive(true);
             gameOver = true;
-            GameObject.Destroy(Hero);
-            Cursor.visible = true;
 
             yield return new WaitForSeconds(2f);
+            Cursor.visible = true;
             MinigameCompletionHandler.WinCallback.Invoke();
         }
 
         IEnumerator Lose() {
             LoseText.SetActive(true);
             gameOver = true;
-            GameObject.Destroy(Hero);
-            Cursor.visible = true;
-
+            Hero.GetComponent<SpriteRenderer>().sprite = Dead;
+            
             yield return new WaitForSeconds(2f);
+            Cursor.visible = true;
             MinigameCompletionHandler.LoseCallback.Invoke();
         }
     }

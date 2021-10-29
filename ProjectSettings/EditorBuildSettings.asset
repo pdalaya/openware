@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Minigames/Bubble Pop/Bubble Pop.unity
     guid: 7162cf3db724c1948b12fe521e5bc830
+  - enabled: 1
+    path: Assets/Minigames/Split/Split.unity
+    guid: bbc100d212b659c46ad1a2b834ad809d
   m_configObjects: {}
