@@ -462,6 +462,7 @@ MonoBehaviour:
   _endDelay: 2
   _minigameCompletionHandler: {fileID: 1782966760}
   _resultText: {fileID: 1653776781}
+  _countdownTimer: {fileID: 2100753306}
 --- !u!1001 &479326363
 PrefabInstance:
   m_ObjectHideFlags: 0
