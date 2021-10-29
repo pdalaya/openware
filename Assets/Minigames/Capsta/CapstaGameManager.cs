@@ -17,8 +17,9 @@ public class CapstaGameManager : MonoBehaviour
     public GameObject WinText;
     public GameObject LoseText;
     public MinigameCompletionHandler MinigameCompletionHandler;
+    public GameObject Clippy;
 
-    float pricePerDiaper = 13.99f;
+    float price = 79.99f;
     int quantity = 25;
     string capstaText = "";
     string lastInput;
@@ -34,6 +35,7 @@ public class CapstaGameManager : MonoBehaviour
         StartCoroutine("Countdown");
         WinText.SetActive(false);
         LoseText.SetActive(false);
+        Clippy.SetActive(false);
     }
 
     void Update() {
@@ -84,6 +86,10 @@ public class CapstaGameManager : MonoBehaviour
             return;
         }
 
+        if (text.Length == 2 && lastInput.Length == 1) {
+            Clippy.SetActive(true);
+        }
+
         lastInput = text;
 
         if (text == capstaText) {
@@ -97,14 +103,14 @@ public class CapstaGameManager : MonoBehaviour
 
     void SetupCapsta() {
         Object[] objs = Resources.LoadAll("Capstas", typeof(Sprite));
-        int ind = Random.Range(0, objs.Length - 1);
+        int ind = Random.Range(0, objs.Length);
         CaptchaImage.overrideSprite = (Sprite)objs[ind];
         capstaText = objs[ind].name;
     }
 
     void UpdateQuantityAndPrice() {
         QuantityText.text = "" + quantity;
-        PriceText.text = "$" + string.Format("{0:.##}", quantity * pricePerDiaper);
+        PriceText.text = "$" + string.Format("{0:.##}", quantity * price);
     }
 
     public void IncreaseQuantity() {

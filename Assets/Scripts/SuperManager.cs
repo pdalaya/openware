@@ -261,7 +261,8 @@ namespace SuperManager
 
             GameObject.Find("Back button").GetComponent<Button>().onClick.AddListener(BackToMainMenu);
 
-            // Setup menu button actions
+            // Add new minigame here
+            // Here we set the callback on the button for each minigame. Make sure the button name is correct.
             GameObject.Find("Alphabet").GetComponent<Button>().onClick.AddListener(DidTapAlphabetGame);
             alphabetize.GetComponent<Button>().onClick.AddListener(DidTapAlphabetizeGame);
             GameObject.Find("Awp").GetComponent<Button>().onClick.AddListener(DidTapAwpGame);
@@ -274,9 +275,11 @@ namespace SuperManager
             GameObject.Find("Jump Rope").GetComponent<Button>().onClick.AddListener(DidTapJumpRopeGame);
             GameObject.Find("Keepie Uppie").GetComponent<Button>().onClick.AddListener(DidTapKeepieUppieGame);
             GameObject.Find("Relax").GetComponent<Button>().onClick.AddListener(DidTapRelaxGame);
+            GameObject.Find("Mouse Maze").GetComponent<Button>().onClick.AddListener(DidTapMouseMazeGame);
         }
 
-        // Specific minigame menu callbacks
+        // Specific minigame menu callbacks        
+        // Add new minigame here: a function that gets called when a player clicks the new minigame button
         void DidTapAlphabetGame()
         {
             StartCoroutine(ShowAndSetupSpecificMinigame("Alphabet"));
@@ -331,6 +334,10 @@ namespace SuperManager
             StartCoroutine(ShowAndSetupSpecificMinigame("Keepie Uppie"));
         }
 
+        void DidTapMouseMazeGame() {
+            StartCoroutine(ShowAndSetupSpecificMinigame("Mouse Maze"));
+        }
+
         void DidTapRelaxGame()
         {
             StartCoroutine(ShowAndSetupSpecificMinigame("Relax"));
@@ -358,6 +365,7 @@ namespace SuperManager
 
         void PopulateMinigameSceneNames()
         {
+            // Add new minigame here
             minigameSceneNames.Add("Alphabet");
             minigameSceneNames.Add("Alphabetize");
             minigameSceneNames.Add("Button Mash");
@@ -368,6 +376,7 @@ namespace SuperManager
             minigameSceneNames.Add("Graduation");
             minigameSceneNames.Add("Jump Rope");
             minigameSceneNames.Add("Keepie Uppie");
+            minigameSceneNames.Add("Mouse Maze");
             minigameSceneNames.Add("Relax");
         }
     }

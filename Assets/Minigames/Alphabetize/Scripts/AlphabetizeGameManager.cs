@@ -31,7 +31,7 @@ namespace Alphabetize {
             FeedbackText.text = "";
 
             for (int x = 0; x < NumberOfWords; x++) {
-                int ind = Random.Range(0, wordList.Count - 1);
+                int ind = Random.Range(0, wordList.Count);
                 string newWord = wordList[ind];
                 wordList.RemoveAt(ind);
                 spawnedWords.Add(newWord);

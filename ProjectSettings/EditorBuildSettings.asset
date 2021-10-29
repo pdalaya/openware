@@ -51,6 +51,9 @@ EditorBuildSettings:
     path: Assets/Minigames/Keepie Uppie/Keepie Uppie.unity
     guid: 4c8c40179ccef4bbdb251b26a34a95ff
   - enabled: 1
+    path: Assets/Minigames/Mouse Maze/Mouse Maze.unity
+    guid: 0f203ac6d35c53d4585e27ff1c41694a
+  - enabled: 1
     path: Assets/Minigames/Relax/Relax.unity
     guid: d3ef1c99722264c5b86c6a86050abb5e
   m_configObjects: {}
