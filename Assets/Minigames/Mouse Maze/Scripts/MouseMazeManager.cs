@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace MouseMaze {
     class Map {
@@ -26,11 +27,13 @@ namespace MouseMaze {
         public GameObject WinText;
         public GameObject LoseText;
         public GameObject WinArea;
+        public TextMeshProUGUI CountdownText;
 
         bool didStart = false;
         bool gameOver = false;
         List<Map> maps = new List<Map>();
         GameObject currentWall = null;
+        int timeRemaining = 13;
 
         void Awake() {
             Cursor.visible = false;
@@ -38,6 +41,21 @@ namespace MouseMaze {
             LoseText.SetActive(false);
             PopulateMaps();
             SetupRandomMap();
+            StartCoroutine("Countdown");
+        }
+
+        IEnumerator Countdown() {
+            if (!gameOver) {
+                timeRemaining -= 1;
+                CountdownText.text = "" + timeRemaining;
+
+                if (timeRemaining == 0) {
+                    StartCoroutine("Lose");
+                } else {
+                    yield return new WaitForSeconds(1);
+                    StartCoroutine("Countdown");
+                }
+            }
         }
 
         void PopulateMaps() {
