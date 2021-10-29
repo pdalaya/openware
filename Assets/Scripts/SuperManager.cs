@@ -355,18 +355,18 @@ namespace SuperManager
             currentScreen = Screen.PracticeMinigame;
             SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
 
-            GameObject completionHandler = null;
+            MinigameCompletionHandler completionHandler = null;
 
             while (completionHandler == null)
             {
                 yield return new WaitForEndOfFrame();
-                completionHandler = GameObject.Find("Minigame Completion Handler");
+                completionHandler = FindObjectOfType<MinigameCompletionHandler>();
             }
 
             SceneManager.UnloadSceneAsync("Minigame Menu");
 
-            completionHandler.GetComponent<MinigameCompletionHandler>().WinCallback = DidCompleteSpecificMinigame;
-            completionHandler.GetComponent<MinigameCompletionHandler>().LoseCallback = DidCompleteSpecificMinigame;
+            completionHandler.WinCallback = DidCompleteSpecificMinigame;
+            completionHandler.LoseCallback = DidCompleteSpecificMinigame;
         }
 
         void PopulateMinigameSceneNames()

@@ -12,9 +12,11 @@ namespace BubblePop
         [SerializeField] private int _seconds = 10;
         [SerializeField] private TextMeshProUGUI _text = null;
 
+        public Tween CountDownTween;
+        
         private void Start()
         {
-            DOVirtual.Int(_seconds, 0, _seconds, (count) =>
+            CountDownTween = DOVirtual.Int(_seconds, 0, _seconds, (count) =>
             {
                 _text.text = count.ToString();
                 

@@ -15,7 +15,8 @@ namespace BubblePop
         [SerializeField] private float _endDelay = 2f;
         [SerializeField] private MinigameCompletionHandler _minigameCompletionHandler = null;
         [SerializeField] private TextMeshProUGUI _resultText = null;
-
+        [SerializeField] private CountdownTimer _countdownTimer = null;
+        
         private Bubble[] _bubbles = null;
         private int _count = 0;
         private int _amount = 0;
@@ -64,7 +65,7 @@ namespace BubblePop
         {
             ShowResultText(true);
             DOVirtual.DelayedCall(_endDelay, () => _minigameCompletionHandler.WinCallback?.Invoke());
-            DOTween.KillAll();
+            _countdownTimer.CountDownTween.Kill();
         }
 
         public void OnGameFailed()
